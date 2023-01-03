@@ -10,10 +10,8 @@
             "email": "tuhin@codesolz.net"
         }
     ],
-    "config": {
-        "platform": {
-            "php": "7.3.0"
-        }
+    "require": {
+        "php": ">=7.2.5"
     },
     "autoload": {
         "psr-4": {
