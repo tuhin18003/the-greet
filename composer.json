@@ -1,0 +1,23 @@
+{
+    "name": "tuhin18003/the-greet",
+    "description": "Greeting based on time and with option to add name at the end of the line",
+    "type": "library",
+    "homepage": "https://github.com/tuhin18003/the-greet",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "M.Tuhin",
+            "email": "tuhin@codesolz.net"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.3.0"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Tuhin18003\\Greet\\": "src/"
+        }
+    }
+}
