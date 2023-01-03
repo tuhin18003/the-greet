@@ -19,8 +19,9 @@ class Greet
         }
 
         if ($name != null) {
-            $msg .= ' '.$name.'.';
+            $msg .= ' '.$name;
         }
+        $msg .= '.';
 
         if ( $show_time_format ) {
             $msg .= ' Today is ' . date( $show_time_format );
