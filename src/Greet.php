@@ -4,27 +4,34 @@ namespace Tuhin18003\Greet;
 
 class Greet
 {
-    public static function hello($name = null, $show_time_format = '' )
+    public static function hello($name = null, $show_time_format = '')
     {
         $msg = '';
-        $time = date('H');
-        if ($time < '12') {
+        $hour = date('H');
+        $inspiration = '';
+
+        if ($hour < 12) {
             $msg = 'Good morning';
-        } elseif ($time >= '12' && $time < '17') {
+            $inspiration = 'Rise and shine! A new day brings new opportunities.';
+        } elseif ($hour >= 12 && $hour < 17) {
             $msg = 'Good afternoon';
-        } elseif ($time >= '17' && $time < '19') {
+            $inspiration = 'Keep going — the best is yet to come!';
+        } elseif ($hour >= 17 && $hour < 19) {
             $msg = 'Good evening';
-        } elseif ($time >= '19') {
+            $inspiration = 'Take a moment to reflect and breathe. You’ve done great.';
+        } else {
             $msg = 'Good night';
+            $inspiration = 'Rest well — tomorrow holds endless possibilities.';
         }
 
-        if ($name != null) {
-            $msg .= ' '.$name;
+        if ($name !== null) {
+            $msg .= ' ' . $name;
         }
-        $msg .= '.';
 
-        if ( $show_time_format ) {
-            $msg .= ' Today is ' . date( $show_time_format );
+        $msg .= '. ' . $inspiration;
+
+        if ($show_time_format) {
+            $msg .= ' Today is ' . date($show_time_format) . '.';
         }
 
         return $msg;
