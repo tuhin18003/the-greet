@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Usage: bash git-push.sh --release "v1.0.0"
+# Usage:
+#   bash git-push.sh
+#   bash git-push.sh --release "v1.0.2"
 
 set -e
 
-# Parse args
+# Parse arguments
 RELEASE=""
 while [[ "$#" -gt 0 ]]; do
     case $1 in
@@ -14,29 +16,36 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-# Get current branch
+# Get current branch name
 CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
 
-# Stage changes
-echo "🔍 Checking for local changes..."
+# Stage and commit if there are changes
 if [[ -n $(git status --porcelain) ]]; then
-    echo "📝 Staging and committing changes..."
+    echo "📝 Committing local changes..."
     git add .
     git commit -m "🔄 Update: $(date '+%Y-%m-%d %H:%M:%S')"
 else
     echo "✅ No local changes to commit."
 fi
 
-# Push branch
+# Push the current branch
 echo "🚀 Pushing branch: $CURRENT_BRANCH"
 git push origin "$CURRENT_BRANCH"
 
 # Handle release tag
 if [ -n "$RELEASE" ]; then
     echo "🏷️  Tagging release: $RELEASE"
+
+    # Delete local tag if it already exists
+    if git rev-parse "$RELEASE" >/dev/null 2>&1; then
+        echo "⚠️  Tag $RELEASE already exists locally. Deleting it..."
+        git tag -d "$RELEASE"
+    fi
+
+    # Create and push new tag
     git tag -a "$RELEASE" -m "Release $RELEASE"
     git push origin "$RELEASE"
-    echo "✅ Release tag $RELEASE pushed."
+    echo "✅ Release tag $RELEASE pushed successfully."
 else
-    echo "ℹ️  No --release version provided. Skipping tag."
+    echo "ℹ️  No --release version provided. Skipping tagging."
 fi
