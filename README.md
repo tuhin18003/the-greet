@@ -42,6 +42,6 @@ Good morning Jon Doe. Today is Tuesday January 3, 2023
 - *Created by - [M.Tuhin](https://codesolz.net/)*
 
 <a href="https://codesolz.net">
-  <img src="https://codesolz.net/images/brand-logo/logo.png" alt="codesolz.net"/>
+  <img src="https://static.codesolz.net/cs/codesolz-footer-logo.webp" alt="codesolz.net"/>
 </a>
 
