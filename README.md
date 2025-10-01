@@ -1,5 +1,4 @@
 # The Greet
-==============================
 
 Greeting helper based on **time of the day** with the option to include the person’s name and formatted date.
 
